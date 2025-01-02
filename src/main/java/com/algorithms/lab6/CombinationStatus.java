@@ -9,11 +9,13 @@ public class CombinationStatus {
     private final String combination;
     private final String userStatus;
     private final String computerStatus;
+    private final String combinationValue;
 
-    public CombinationStatus(String combination, String userStatus, String computerStatus) {
+    public CombinationStatus(String combination, String userStatus, String computerStatus, String combinationValue) {
         this.combination = combination;
         this.userStatus = userStatus;
         this.computerStatus = computerStatus;
+        this.combinationValue = combinationValue;
     }
 
     public String getCombination() {
@@ -26,6 +28,10 @@ public class CombinationStatus {
 
     public String getComputerStatus() {
         return computerStatus;
+    }
+
+    public String getCombinationValue() {
+        return combinationValue;
     }
 
     static String getStatus(String combination, boolean isUser) {

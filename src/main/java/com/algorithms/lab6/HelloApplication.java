@@ -147,25 +147,31 @@ public class HelloApplication extends Application {
         TableView<CombinationStatus> tableView = new TableView<>();
         TableColumn<CombinationStatus, String> combinationColumn = new TableColumn<>("Combination");
         combinationColumn.setCellValueFactory(new PropertyValueFactory<>("combination"));
+        combinationColumn.setMinWidth(100);
         TableColumn<CombinationStatus, String> userStatusColumn = new TableColumn<>("User Status");
         userStatusColumn.setCellValueFactory(new PropertyValueFactory<>("userStatus"));
-        TableColumn<CombinationStatus, String> computerStatusColumn = new TableColumn<>("Computer Status");
+        userStatusColumn.setMinWidth(100);
+        TableColumn<CombinationStatus, String> computerStatusColumn = new TableColumn<>("Computer" + "\n" + "Status");
         computerStatusColumn.setCellValueFactory(new PropertyValueFactory<>("computerStatus"));
-        tableView.getColumns().addAll(combinationColumn, userStatusColumn, computerStatusColumn);
+        computerStatusColumn.setMinWidth(100);
+        TableColumn<CombinationStatus, String> combinationValueColumn = new TableColumn<>("Combination" + "\n" + "Value");
+        combinationValueColumn.setCellValueFactory(new PropertyValueFactory<>("combinationValue"));
+        combinationValueColumn.setMinWidth(130);
+        tableView.getColumns().addAll(combinationColumn, userStatusColumn, computerStatusColumn, combinationValueColumn);
         tableContainer.getChildren().add(tableView);
         showCombinationsButton.setOnAction(e -> {
             if (!tableContainer.isVisible()) {
                 ObservableList<CombinationStatus> data = FXCollections.observableArrayList(
-                        new CombinationStatus("General", CombinationStatus.getStatus("General", true), CombinationStatus.getStatus("General", false)),
-                        new CombinationStatus("Four of a Kind", CombinationStatus.getStatus("Four of a Kind", true), CombinationStatus.getStatus("Four of a Kind", false)),
-                        new CombinationStatus("Fullhouse", CombinationStatus.getStatus("Fullhouse", true), CombinationStatus.getStatus("Fullhouse", false)),
-                        new CombinationStatus("Street", CombinationStatus.getStatus("Street", true), CombinationStatus.getStatus("Street", false)),
-                        new CombinationStatus("6", CombinationStatus.getStatus(String.valueOf(6), true), CombinationStatus.getStatus(String.valueOf(6), false)),
-                        new CombinationStatus("5", CombinationStatus.getStatus(String.valueOf(5), true), CombinationStatus.getStatus(String.valueOf(5), false)),
-                        new CombinationStatus("4", CombinationStatus.getStatus(String.valueOf(4), true), CombinationStatus.getStatus(String.valueOf(4), false)),
-                        new CombinationStatus("3", CombinationStatus.getStatus(String.valueOf(3), true), CombinationStatus.getStatus(String.valueOf(3), false)),
-                        new CombinationStatus("2", CombinationStatus.getStatus(String.valueOf(2), true), CombinationStatus.getStatus(String.valueOf(2), false)),
-                        new CombinationStatus("1", CombinationStatus.getStatus(String.valueOf(1), true), CombinationStatus.getStatus(String.valueOf(1), false))
+                        new CombinationStatus("General", CombinationStatus.getStatus("General", true), CombinationStatus.getStatus("General", false), "Win/60"),
+                        new CombinationStatus("Four of a Kind", CombinationStatus.getStatus("Four of a Kind", true), CombinationStatus.getStatus("Four of a Kind", false), "45/40"),
+                        new CombinationStatus("Fullhouse", CombinationStatus.getStatus("Fullhouse", true), CombinationStatus.getStatus("Fullhouse", false), "35/30"),
+                        new CombinationStatus("Street", CombinationStatus.getStatus("Street", true), CombinationStatus.getStatus("Street", false), "25/20"),
+                        new CombinationStatus("6", CombinationStatus.getStatus(String.valueOf(6), true), CombinationStatus.getStatus(String.valueOf(6), false), "6 * <dice 6 count>"),
+                        new CombinationStatus("5", CombinationStatus.getStatus(String.valueOf(5), true), CombinationStatus.getStatus(String.valueOf(5), false), "5 * <dice 5 count>"),
+                        new CombinationStatus("4", CombinationStatus.getStatus(String.valueOf(4), true), CombinationStatus.getStatus(String.valueOf(4), false), "4 * <dice 4 count>"),
+                        new CombinationStatus("3", CombinationStatus.getStatus(String.valueOf(3), true), CombinationStatus.getStatus(String.valueOf(3), false), "3 * <dice 3 count>"),
+                        new CombinationStatus("2", CombinationStatus.getStatus(String.valueOf(2), true), CombinationStatus.getStatus(String.valueOf(2), false), "2 * <dice 2 count>"),
+                        new CombinationStatus("1", CombinationStatus.getStatus(String.valueOf(1), true), CombinationStatus.getStatus(String.valueOf(1), false), "1 * <dice 1 count>")
                 );
                 tableView.setItems(data);
                 tableContainer.setVisible(true);
