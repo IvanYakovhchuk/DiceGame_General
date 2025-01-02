@@ -2,8 +2,8 @@ package com.algorithms.lab6;
 
 import java.util.Map;
 
-import static com.algorithms.lab6.HelloApplication.computerUsedCombinations;
-import static com.algorithms.lab6.HelloApplication.userUsedCombinations;
+import static com.algorithms.lab6.DiceGameGeneralApplication.computerUsedCombinations;
+import static com.algorithms.lab6.DiceGameGeneralApplication.userUsedCombinations;
 
 public class CombinationStatus {
     private final String combination;

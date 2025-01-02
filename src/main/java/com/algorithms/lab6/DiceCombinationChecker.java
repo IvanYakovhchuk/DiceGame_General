@@ -4,8 +4,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static com.algorithms.lab6.HelloApplication.computerUsedCombinations;
-import static com.algorithms.lab6.HelloApplication.isStreet;
+import static com.algorithms.lab6.DiceGameGeneralApplication.computerUsedCombinations;
+import static com.algorithms.lab6.DiceGameGeneralApplication.isStreet;
 
 public class DiceCombinationChecker {
 

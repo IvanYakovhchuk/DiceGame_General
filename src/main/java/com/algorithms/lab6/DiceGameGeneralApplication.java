@@ -28,7 +28,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
-public class HelloApplication extends Application {
+public class DiceGameGeneralApplication extends Application {
 
     private static final int ROUNDS = 10;
     private static int roundNumber = 1;
@@ -67,7 +67,7 @@ public class HelloApplication extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(DiceGameGeneralApplication.class.getResource("hello-view.fxml"));
         AnchorPane root = fxmlLoader.load();
         diceRoot = new Group();
         root.getChildren().add(diceRoot);
