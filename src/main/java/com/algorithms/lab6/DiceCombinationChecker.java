@@ -27,18 +27,14 @@ public class DiceCombinationChecker {
                         int changes = countChanges(dice, roll);
                         if (changes < minChanges) {
                             minChanges = changes;
-                            if ("Four of a Kind".equals(bestCombination)) {
-                                bestCombination = "General";
-                            } else {
-                                bestCombination = combination;
-                            }
+                            bestCombination = combination;
                             currentDice = new ArrayList<>(roll);
                             bestChanges = calculateChanges(dice, roll);
                         }
                     }
                 }
 
-                if ("Four of a Kind".equals(bestCombination) && rerollAttempt < 2) {
+                if (("Four of a Kind".equals(bestCombination)) && rerollAttempt < 2) {
                     List<Integer> attemptToGeneral = tryToImproveToGeneral(currentDice);
                     if (attemptToGeneral != null) {
                         bestChanges = calculateChanges(dice, attemptToGeneral);
@@ -60,7 +56,7 @@ public class DiceCombinationChecker {
                 .collect(Collectors.groupingBy(x -> x, Collectors.counting()));
 
         int targetNumber = frequencies.entrySet().stream()
-                .filter(entry -> entry.getValue() == 4)
+                .filter(entry -> entry.getValue() >= 3)
                 .map(Map.Entry::getKey)
                 .findFirst().orElse(-1);
 
@@ -70,7 +66,6 @@ public class DiceCombinationChecker {
         for (int i = 0; i < newDice.size(); i++) {
             if (newDice.get(i) != targetNumber) {
                 newDice.set(i, targetNumber);
-                break;
             }
         }
 
